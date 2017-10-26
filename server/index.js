@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-const port = process.env.PORT || 3000;
+//const port = process.env.PORT || 3000;
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../public')));
@@ -21,8 +21,9 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500).send(err.message || 'Internal server error.');
 });
 
-app.listen(port, function () {
-  console.log('Knock, knock');
-  console.log("Who's there?");
-  console.log(`Your server, listening on port ${port}`);
-});
+// app.listen(port, function () {
+//   console.log('Knock, knock');
+//   console.log("Who's there?");
+//   console.log(`Your server, listening on port ${port}`);
+// });
+
