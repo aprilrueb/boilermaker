@@ -3,13 +3,12 @@ const app = express();
 const path = require('path');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-//const port = process.env.PORT || 3000;
 
 module.exports = app
   .use(morgan('dev'))
-  .use(express.static(path.join(__dirname, '../public')))
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: true }))
+  .use(express.static(path.join(__dirname, '../public')))
   .use('/api', require('./apiRoutes'))
   .get('*', function (req, res) {
     res.sendFile(path.join(__dirname, '../public'));
@@ -19,11 +18,3 @@ module.exports = app
     console.error(err.stack);
     res.status(err.status || 500).send(err.message || 'Internal server error.');
     });
-
-// app.listen(port, function () {
-//   console.log('Knock, knock');
-//   console.log("Who's there?");
-//   console.log(`Your server, listening on port ${port}`);
-// });
-
-module.exports = app;
