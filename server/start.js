@@ -1,6 +1,8 @@
-const db = require('./db/db.js');
+const { db } = require('./db/models/index.js');
 const app = require('./index.js');
 const port = process.env.PORT || 3000;
+
+console.log('YESSSSS: ', db.models);
 
 db.sync()
   .then(function(){
